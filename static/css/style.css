@@ -1,0 +1,43 @@
+body{
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:30px;
+}
+
+h1{
+    color:#ff9800;
+}
+
+.drop-zone{
+    border:2px dashed #ff9800;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+#waveform{
+    background:#222;
+    border-radius:20px;
+    padding:10px;
+    margin-bottom:20px;
+}
+
+.controls button,
+.export-panel button{
+    padding:12px 20px;
+    margin-right:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background:#ff9800;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}

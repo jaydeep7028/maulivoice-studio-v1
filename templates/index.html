@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MauliVoice Studio Ultimate V1</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>MauliVoice Studio Ultimate V1</h1>
+
+    <div id="dropZone" class="drop-zone">
+        Drop Audio File Here
+    </div>
+
+    <div id="waveform"></div>
+
+    <div class="controls">
+        <button id="playBtn">▶ Play</button>
+        <button id="pauseBtn">⏸ Pause</button>
+        <button id="stopBtn">⏹ Stop</button>
+    </div>
+
+    <audio id="audioPlayer" controls></audio>
+
+    <div class="export-panel">
+        <button>YouTube Export</button>
+        <button>Shorts Export</button>
+        <button>Podcast Export</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/player.js') }}"></script>
+</body>
+</html>
