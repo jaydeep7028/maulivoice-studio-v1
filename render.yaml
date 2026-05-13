@@ -1,6 +1,5 @@
 services:
   - type: web
-    name: maulivoice-universal-creator-studio
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    name: maulivoice-latest-tech
+    runtime: docker
+    plan: free

@@ -1,32 +1,32 @@
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at top left,#2d2118,#080808 45%,#000);color:#fff;font-family:Segoe UI,Arial,sans-serif}
+body{margin:0;background:radial-gradient(circle at top left,#312115,#070707 45%,#000);color:#fff;font-family:Segoe UI,Arial,sans-serif}
 .app{display:flex;min-height:100vh}
-.sidebar{width:270px;padding:28px;background:rgba(0,0,0,.72);border-right:1px solid rgba(255,152,0,.25)}
-.logo{width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,#ffcc80,#ff8c00);display:grid;place-items:center;color:#111;font-weight:900;margin-bottom:16px}
-.sidebar h2{margin:0}.sidebar p{color:#d7c1a1}
+.sidebar{width:275px;padding:28px;background:rgba(0,0,0,.74);border-right:1px solid rgba(255,152,0,.22)}
+.logo{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#ffcf86,#ff8a00);display:grid;place-items:center;color:#111;font-weight:900;margin-bottom:18px}
+.sidebar h2{margin:0;font-size:25px}.sidebar p{color:#e4caa5}
 nav{display:grid;gap:10px;margin-top:25px}
-nav a{padding:13px;border-radius:14px;background:rgba(255,255,255,.05);color:#e9d5b7}
-nav a.active{background:rgba(255,152,0,.22);color:#ffcc80}
-.workspace{flex:1;padding:38px;max-width:1200px}
-.hero span{letter-spacing:3px;color:#ffb347;font-size:12px;font-weight:800}
-.hero h1{font-size:clamp(34px,5vw,68px);margin:12px 0;color:#fff3e0}
-.hero p{color:#e7d2b5;font-size:18px}
-.panel{margin-top:24px;padding:28px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px rgba(0,0,0,.35)}
-label{display:block;margin:18px 0 8px;color:#ffcc80;font-weight:700}
-.drop-zone{position:relative;border:2px dashed #ff9800;border-radius:22px;padding:42px;text-align:center;background:rgba(0,0,0,.26);cursor:pointer}
-.drop-zone small{display:block;color:#cdb89b;margin-top:8px}
-.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
-.drop-zone.dragging{background:rgba(255,152,0,.16);transform:scale(1.01)}
-select,textarea{width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.45);color:white;padding:14px;font-size:15px}
-textarea{min-height:130px;resize:vertical}
-.wave-panel{margin-top:22px}
+nav a{padding:13px;border-radius:14px;background:rgba(255,255,255,.055);color:#f0dcbf}
+nav a.active{background:rgba(255,152,0,.23);color:#ffcc80}
+.mini{margin-top:28px;color:#ffcc80;border:1px solid rgba(255,152,0,.25);border-radius:15px;padding:12px}
+.workspace{flex:1;padding:38px;max-width:1250px}
+.hero span{letter-spacing:4px;color:#ffb347;font-size:12px;font-weight:900}
+.hero h1{font-size:clamp(36px,5vw,72px);margin:14px 0;color:#fff3e0;line-height:1}
+.hero p{color:#ead4b7;font-size:18px}
+.panel{margin-top:24px;padding:28px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.38)}
+label{display:block;margin:18px 0 8px;color:#ffcc80;font-weight:800}
+.drop-zone{position:relative;border:2px dashed #ff9800;border-radius:22px;padding:44px;text-align:center;background:rgba(0,0,0,.28);cursor:pointer}
+.drop-zone small{display:block;color:#d7bea0;margin-top:8px}.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop-zone.dragging{background:rgba(255,152,0,.18);transform:scale(1.01)}
+select,textarea{width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.48);color:white;padding:14px;font-size:15px}
+textarea{min-height:132px;resize:vertical}
+.wave-card{margin-top:22px}
 #waveform{background:#181818;border-radius:18px;padding:14px;min-height:130px}
 audio{width:100%;margin-top:14px}
-.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-button{border:none;border-radius:14px;padding:13px 18px;font-weight:800;cursor:pointer}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button{border:none;border-radius:14px;padding:13px 18px;font-weight:900;cursor:pointer}
 .controls button,.primary{background:linear-gradient(135deg,#ffcc80,#ff8c00);color:#111}
 .primary{margin-top:22px;font-size:16px}
 .status{margin-top:18px;padding:14px;border-radius:14px;background:rgba(0,0,0,.38);color:#ffdb9c}
 .downloads{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-.downloads a{background:#ffcc80;color:#111;text-decoration:none;font-weight:800;padding:12px 15px;border-radius:14px}
-@media(max-width:850px){.app{display:block}.sidebar{width:100%;border-right:0;border-bottom:1px solid rgba(255,152,0,.25)}nav{grid-template-columns:1fr 1fr}.workspace{padding:20px}.panel{padding:18px;border-radius:20px}}
+.downloads a{background:#ffcc80;color:#111;text-decoration:none;font-weight:900;padding:12px 15px;border-radius:14px}
+@media(max-width:850px){.app{display:block}.sidebar{width:100%;border-right:0;border-bottom:1px solid rgba(255,152,0,.25)}nav{grid-template-columns:1fr 1fr}.workspace{padding:20px}.panel{padding:18px;border-radius:22px}}

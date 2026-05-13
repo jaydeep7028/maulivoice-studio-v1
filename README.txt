@@ -1,5 +1,16 @@
-MauliVoice Studio Ultimate — Universal AI Creator Studio PWA
+MauliVoice Studio Ultimate — Latest-Tech Cloud PWA
 
-Works on Windows browser and mobile browser.
-Upload to GitHub and deploy on Render.
-Important: FFmpeg must be available on the server for processing.
+Includes:
+- Docker deployment
+- FFmpeg installed in cloud container
+- Mobile + Windows responsive PWA
+- Waveform preview
+- Voice mastering presets
+- SRT subtitle export
+- Download links
+
+Deploy on Render:
+1. Upload all files to GitHub
+2. Render detects Dockerfile
+3. Deploy latest commit
+4. Open app URL

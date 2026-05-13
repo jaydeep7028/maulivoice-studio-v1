@@ -1,74 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MauliVoice Studio Ultimate</title>
-  <meta name="theme-color" content="#111111" />
-  <link rel="manifest" href="/static/manifest.json" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <meta name="theme-color" content="#111111"/>
+  <link rel="manifest" href="/static/manifest.json"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
   <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
-  <main class="app">
-    <aside class="sidebar">
-      <div class="logo">MV</div>
-      <h2>MauliVoice</h2>
-      <p>Universal AI Creator Studio</p>
-      <nav>
-        <a class="active">Voice Studio</a>
-        <a>Music Mixer</a>
-        <a>Subtitle Studio</a>
-        <a>Export Center</a>
-      </nav>
-    </aside>
+<main class="app">
+  <aside class="sidebar">
+    <div class="logo">MV</div>
+    <h2>MauliVoice</h2>
+    <p>Universal AI Creator Studio</p>
+    <nav>
+      <a class="active">Voice Studio</a>
+      <a>Music Mixer</a>
+      <a>Subtitle Studio</a>
+      <a>Export Center</a>
+      <a>AI Cloud</a>
+    </nav>
+    <div class="mini">Latest-Tech Cloud PWA</div>
+  </aside>
 
-    <section class="workspace">
-      <header class="hero">
-        <span>WINDOWS + MOBILE READY PWA</span>
-        <h1>MauliVoice Studio Ultimate</h1>
-        <p>Upload, preview waveform, process voice, generate subtitles and export creator-ready audio.</p>
-      </header>
+  <section class="workspace">
+    <header class="hero">
+      <span>WINDOWS + MOBILE + CLOUD READY</span>
+      <h1>MauliVoice Studio Ultimate</h1>
+      <p>Universal creator studio for voice mastering, waveform preview, subtitle export and social-ready audio.</p>
+    </header>
 
-      <form id="processForm" class="panel">
-        <label>Audio File</label>
-        <div id="dropZone" class="drop-zone">
-          <strong>Drop audio here</strong>
-          <small>or tap/click to choose file</small>
-          <input id="audioInput" name="audio" type="file" accept=".mp3,.wav,.m4a,.aac,.flac,.ogg" required />
+    <form id="processForm" class="panel">
+      <label>Audio File</label>
+      <div id="dropZone" class="drop-zone">
+        <strong>Drop audio here</strong>
+        <small>or tap/click to choose file</small>
+        <input id="audioInput" name="audio" type="file" accept=".mp3,.wav,.m4a,.aac,.flac,.ogg" required/>
+      </div>
+
+      <label>Preset</label>
+      <select name="preset">
+        {% for key, item in presets.items() %}
+          <option value="{{ key }}">{{ item.label }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Script for subtitles</label>
+      <textarea name="script" placeholder="Paste script here for SRT subtitle export..."></textarea>
+
+      <section class="wave-card">
+        <div id="waveform"></div>
+        <audio id="audioPlayer" controls></audio>
+        <div class="controls">
+          <button type="button" id="playBtn">▶ Play</button>
+          <button type="button" id="pauseBtn">⏸ Pause</button>
+          <button type="button" id="stopBtn">■ Stop</button>
         </div>
+      </section>
 
-        <label>Preset</label>
-        <select name="preset">
-          <option value="studio_master">Studio Master</option>
-          <option value="podcast">Podcast Voice</option>
-          <option value="shorts">YouTube Shorts Loud</option>
-          <option value="warm_voice">Warm Voice</option>
-        </select>
+      <button class="primary" type="submit">Generate Master + Subtitles</button>
 
-        <label>Script for SRT subtitles</label>
-        <textarea name="script" placeholder="Paste script for subtitle export..."></textarea>
+      <div id="status" class="status">Ready.</div>
+      <div id="downloads" class="downloads"></div>
+    </form>
+  </section>
+</main>
 
-        <div class="wave-panel">
-          <div id="waveform"></div>
-          <audio id="audioPlayer" controls></audio>
-          <div class="controls">
-            <button type="button" id="playBtn">▶ Play</button>
-            <button type="button" id="pauseBtn">⏸ Pause</button>
-            <button type="button" id="stopBtn">■ Stop</button>
-          </div>
-        </div>
-
-        <button class="primary" type="submit">Generate Output</button>
-        <div id="status" class="status">Ready.</div>
-        <div id="downloads" class="downloads"></div>
-      </form>
-    </section>
-  </main>
-
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  <script>
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/static/js/sw.js").catch(()=>{});
-  </script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/static/js/sw.js").catch(()=>{});
+}
+</script>
 </body>
 </html>

@@ -61,8 +61,8 @@ document.getElementById("processForm").addEventListener("submit", async e=>{
       statusBox.textContent = "Error: " + data.error;
       return;
     }
-    statusBox.textContent = data.message;
-    downloads.innerHTML = `<a href="${data.audio_url}">Download Audio</a><a href="${data.srt_url}">Download SRT</a>`;
+    statusBox.textContent = `${data.message} — ${data.preset}`;
+    downloads.innerHTML = `<a href="${data.audio_url}">Download Mastered Audio</a><a href="${data.srt_url}">Download SRT</a>`;
   }catch(err){
     statusBox.textContent = "Network/server error: " + err.message;
   }
