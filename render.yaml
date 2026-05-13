@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: maulivoice-studio-v1
+    name: maulivoice-universal-creator-studio
     runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app

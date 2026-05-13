@@ -1,37 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>MauliVoice Studio Ultimate V1</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<script src="https://unpkg.com/wavesurfer.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MauliVoice Studio Ultimate</title>
+  <meta name="theme-color" content="#111111" />
+  <link rel="manifest" href="/static/manifest.json" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
+  <main class="app">
+    <aside class="sidebar">
+      <div class="logo">MV</div>
+      <h2>MauliVoice</h2>
+      <p>Universal AI Creator Studio</p>
+      <nav>
+        <a class="active">Voice Studio</a>
+        <a>Music Mixer</a>
+        <a>Subtitle Studio</a>
+        <a>Export Center</a>
+      </nav>
+    </aside>
 
-<div class="container">
-    <h1>MauliVoice Studio Ultimate V1</h1>
+    <section class="workspace">
+      <header class="hero">
+        <span>WINDOWS + MOBILE READY PWA</span>
+        <h1>MauliVoice Studio Ultimate</h1>
+        <p>Upload, preview waveform, process voice, generate subtitles and export creator-ready audio.</p>
+      </header>
 
-    <div id="dropZone" class="drop-zone">
-        Drop Audio File Here
-    </div>
+      <form id="processForm" class="panel">
+        <label>Audio File</label>
+        <div id="dropZone" class="drop-zone">
+          <strong>Drop audio here</strong>
+          <small>or tap/click to choose file</small>
+          <input id="audioInput" name="audio" type="file" accept=".mp3,.wav,.m4a,.aac,.flac,.ogg" required />
+        </div>
 
-    <div id="waveform"></div>
+        <label>Preset</label>
+        <select name="preset">
+          <option value="studio_master">Studio Master</option>
+          <option value="podcast">Podcast Voice</option>
+          <option value="shorts">YouTube Shorts Loud</option>
+          <option value="warm_voice">Warm Voice</option>
+        </select>
 
-    <div class="controls">
-        <button id="playBtn">▶ Play</button>
-        <button id="pauseBtn">⏸ Pause</button>
-        <button id="stopBtn">⏹ Stop</button>
-    </div>
+        <label>Script for SRT subtitles</label>
+        <textarea name="script" placeholder="Paste script for subtitle export..."></textarea>
 
-    <audio id="audioPlayer" controls></audio>
+        <div class="wave-panel">
+          <div id="waveform"></div>
+          <audio id="audioPlayer" controls></audio>
+          <div class="controls">
+            <button type="button" id="playBtn">▶ Play</button>
+            <button type="button" id="pauseBtn">⏸ Pause</button>
+            <button type="button" id="stopBtn">■ Stop</button>
+          </div>
+        </div>
 
-    <div class="export-panel">
-        <button>YouTube Export</button>
-        <button>Shorts Export</button>
-        <button>Podcast Export</button>
-    </div>
-</div>
+        <button class="primary" type="submit">Generate Output</button>
+        <div id="status" class="status">Ready.</div>
+        <div id="downloads" class="downloads"></div>
+      </form>
+    </section>
+  </main>
 
-<script src="{{ url_for('static', filename='js/player.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script>
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/static/js/sw.js").catch(()=>{});
+  </script>
 </body>
 </html>
