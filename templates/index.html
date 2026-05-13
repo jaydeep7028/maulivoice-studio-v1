@@ -4,142 +4,109 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>MauliVoice Studio Ultimate</title>
-<meta name="theme-color" content="#070b1a"/>
+<meta name="theme-color" content="#080914"/>
 <link rel="manifest" href="/static/manifest.json"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
 <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
 <div class="app">
-  <aside class="sidebar">
-    <div class="brand"><div class="avatar saint"></div><div><b>MauliVoice Studio</b><span>Next-Gen Audio Creator</span></div><em>AI</em></div>
-    <nav>
-      <button class="active">⌂ Dashboard</button>
-      <button>🎚 Audio Editor</button>
-      <button>✨ AI Tools <small>NEW</small></button>
-      <button>🎧 Ambience Mixer</button>
-      <button>🎙 Voice Presets</button>
-      <button>▣ Subtitle Studio</button>
-      <button>▱ Projects</button>
-      <button>⇧ Export Center</button>
-      <button>⚙ Settings</button>
-      <button>? Help & Support</button>
-    </nav>
-    <div class="unlock"><b>Unlock Full Power</b><p>All AI Features + Cloud Exports + Priority</p><button>♕ Upgrade Now</button></div>
-  </aside>
+  <header class="topbar">
+    <div class="brand"><span>MV</span><div><b>MauliVoice Studio Ultimate</b><small>Commercial One-Window Working Build</small></div></div>
+    <div class="status-pill" id="topStatus">Ready</div>
+  </header>
 
-  <main class="workspace">
-    <header class="bar">
-      <div>× Project: <b id="projectTitle">Sant Tukaram Katha</b> <span class="saved">● Saved</span></div>
-      <div class="bar-actions"><button>Upgrade</button><button>◐</button><button>?</button><button>🔔</button><div class="profile"></div></div>
-    </header>
+  <main class="studio">
+    <section class="left-panel">
+      <form id="processForm">
+        <div class="section-title">1. Input</div>
 
-    <form id="processForm">
-      <section class="wave-zone">
-        <div class="file-row">
-          <div><b id="fileName">Sant Tukaram Katha Audio.mp3</b></div>
-          <div><span id="timeLabel">03:26.8 / 12:45.3</span></div>
-          <div class="zoom"><button type="button">⌕ Zoom Out</button><button type="button">⌕ Zoom In</button><button type="button">Fit</button></div>
-        </div>
+        <label>Project Name</label>
+        <input name="project_name" value="MauliVoice Project"/>
 
-        <div id="dropZone" class="drop-mini">
-          <input id="audioInput" name="audio" type="file" accept=".mp3,.wav,.m4a,.aac,.flac,.ogg" required/>
-          <strong>Drag & drop audio file here</strong>
-          <small>or click to browse</small>
-        </div>
-        <input name="project_name" id="projectName" value="Sant Tukaram Katha" hidden/>
-
-        <div id="waveform"></div>
-
-        <div class="transport">
-          <button type="button">↤</button><button type="button">◀</button>
-          <button type="button" id="playBtn" class="play">▶</button>
-          <button type="button">▶▶</button><button type="button">↻</button>
-          <div class="volume">🔊 <input type="range" value="45"/></div>
-          <span class="timebig">03:26.8</span>
-        </div>
-      </section>
-
-      <section class="suite">
-        <div class="suite-left">
-          <h3>AI MASTERING SUITE <span>● AI Engine Active</span></h3>
-          <div class="knobs">
-            <div><i style="--p:85%"></i><b>85%</b><small>Noise Clean</small></div>
-            <div><i style="--p:90%"></i><b>90%</b><small>Voice Enhance</small></div>
-            <div><i style="--p:70%"></i><b>-14 LUFS</b><small>Loudness</small></div>
-            <div><i style="--p:80%"></i><b>80%</b><small>Clarity</small></div>
-            <div><i style="--p:70%"></i><b>70%</b><small>De-Esser</small></div>
-            <div><i style="--p:60%"></i><b>60%</b><small>Stereo Width</small></div>
+        <div class="input-grid">
+          <div>
+            <label>Main Voice / Audio</label>
+            <div id="dropZone" class="drop">
+              <input id="audioInput" name="audio" type="file" accept=".mp3,.wav,.m4a,.aac,.flac,.ogg" required/>
+              <strong>Drop or click audio</strong>
+              <small id="fileName">No file selected</small>
+            </div>
           </div>
-          <div class="quick"><button type="button" class="active">Devotional</button><button type="button">Podcast</button><button type="button">Cinematic</button><button type="button">Narration</button><button type="button">News</button><button type="button">Lofi</button></div>
-        </div>
-        <div class="voice-preset">
-          <h3>VOICE PRESET</h3>
-          <div class="preset-select"><div class="avatar saint"></div><select name="preset">{% for key,item in presets.items() %}<option value="{{key}}">{{item.name}} — {{item.desc}}</option>{% endfor %}</select></div>
-        </div>
-      </section>
 
-      <section class="tools-row">
-        <div class="card">
-          <h3>AI TOOLS</h3>
-          <label><span>AI Noise Removal</span><input type="checkbox" checked/></label>
-          <label><span>AI Voice Clarity</span><input type="checkbox" checked/></label>
-          <label><span>AI De-Reverb</span><input type="checkbox"/></label>
-          <label><span>AI Loudness Match</span><input type="checkbox" checked/></label>
-          <button type="button" class="violet">Process with AI</button>
-        </div>
-
-        <div class="card">
-          <h3>AMBIENCE MIXER</h3>
-          <select><option>Temple Ambience</option><option>Nature</option><option>Studio</option><option>Cinematic</option></select>
-          <div class="ambience-grid"><span>Temple</span><span>Nature</span><span>Studio</span><span>Cinematic</span><span>Crowd</span><span>Rain</span></div>
-          <label>Ambience Volume <input form="processForm" name="bg_volume" type="range" min="0.02" max="0.60" step="0.02" value="0.28"/></label>
-          <input form="processForm" name="background" type="file" accept=".mp3,.wav,.m4a,.aac,.flac,.ogg"/>
-        </div>
-
-        <div class="card">
-          <h3>SUBTITLE STUDIO <span>AI TIMING ON</span></h3>
-          <textarea name="script">संत तुकाराम महाराजांची ही कथा आहे.
-त्यांच्या अभंगांनी आणि विचारांनी लाखो लोकांचे जीवन बदलले...</textarea>
-          <div class="mini-actions"><button type="button">Auto Split</button><button type="button">Smart Timing</button><button type="button">Translate</button></div>
-        </div>
-
-        <div class="card">
-          <h3>VOICE PRESETS</h3>
-          <div class="preset-list">
-            <p>🧡 Devotional <small>Warm, Spiritual Tone</small></p>
-            <p>🎙 Podcast <small>Clean, Modern Voice</small></p>
-            <p>🎬 Cinematic <small>Deep, Wide & Epic</small></p>
-            <p>🗣 Narration <small>Neutral & Professional</small></p>
+          <div>
+            <label>Background / Ambience Optional</label>
+            <div class="drop compact">
+              <input name="background" type="file" accept=".mp3,.wav,.m4a,.aac,.flac,.ogg"/>
+              <strong>Add ambience</strong>
+              <small>Optional music bed</small>
+            </div>
           </div>
-          <button type="button" class="violet">Apply Preset</button>
         </div>
-      </section>
 
-      <div class="recent">
-        <div><b>RECENT PROJECTS</b></div>
-        <span>Sant Tukaram Katha</span><span>Dnyaneshwari Part 1</span><span>Abhang Vani</span><span>Kirtan Recording</span>
+        <div class="section-title">2. Preview</div>
+        <div class="wave-card">
+          <div id="waveform"></div>
+          <audio id="audioPlayer" controls></audio>
+          <div class="transport">
+            <button type="button" id="playBtn">▶ Play</button>
+            <button type="button" id="pauseBtn">⏸ Pause</button>
+            <button type="button" id="stopBtn">■ Stop</button>
+          </div>
+        </div>
+
+        <div class="section-title">3. Subtitles</div>
+        <textarea name="script" placeholder="Paste Marathi/Hindi/English script here for SRT export..."></textarea>
+      </form>
+    </section>
+
+    <aside class="right-panel">
+      <div class="section-title">4. Processing</div>
+
+      <label>Voice Preset</label>
+      <select form="processForm" name="preset">
+        {% for key, item in presets.items() %}
+        <option value="{{ key }}">{{ item.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Export Mode</label>
+      <select form="processForm" name="export_preset">
+        {% for key, item in export_presets.items() %}
+        <option value="{{ key }}">{{ item.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Background Volume</label>
+      <input form="processForm" name="bg_volume" type="range" min="0.02" max="0.60" step="0.02" value="0.12"/>
+
+      <div class="working-list">
+        <div>✅ Voice mastering</div>
+        <div>✅ Noise reduction</div>
+        <div>✅ Background mixing</div>
+        <div>✅ SRT subtitles</div>
+        <div>✅ ZIP package</div>
       </div>
-    </form>
-  </main>
 
-  <aside class="export">
-    <h2>EXPORT CENTER</h2>
-    <p>High Quality Audio & Subtitle Export</p>
-    <label>EXPORT PRESET</label>
-    <select form="processForm" name="export_preset">{% for key,item in export_presets.items() %}<option value="{{key}}">{{item.label}}</option>{% endfor %}</select>
-    <div class="settings-grid"><div>Format<br><b>MP3</b></div><div>Bitrate<br><b>320 kbps</b></div><div>Sample Rate<br><b>48 kHz</b></div></div>
-    <label class="switch-row">Normalize Audio <input type="checkbox" checked/></label>
-    <h3>SUBTITLE SETTINGS</h3>
-    <div class="settings-grid"><div>Format<br><b>SRT</b></div><div>Language<br><b>Marathi</b></div></div>
-    <button form="processForm" class="generate" type="submit">✣ Generate Master + SRT</button>
-    <h3>EXPORT SHORTCUTS</h3>
-    <div id="downloads" class="downloads"><button type="button">Download Audio</button><button type="button">Download SRT</button><button type="button">Export Project</button><button type="button">Export ZIP Package</button></div>
-    <div class="project-info"><h3>PROJECT INFO</h3><p>Created 17 May 2025</p><p>Duration 12:45</p><p>Format MP3</p></div>
-  </aside>
+      <button form="processForm" class="primary" type="submit">Generate Creator Package</button>
+
+      <div id="status" class="message">Ready.</div>
+
+      <div class="download-box" id="downloads">
+        <button disabled>Audio</button>
+        <button disabled>SRT</button>
+        <button disabled>Project</button>
+        <button disabled>ZIP</button>
+      </div>
+    </aside>
+  </main>
 </div>
-<footer>⚙ AI Powered  ☁ Cloud Processing  🛡 Secure & Private  ✨ Fast Export  📱 Mobile & Desktop  ▣ PWA Ready</footer>
+
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/static/js/sw.js").catch(()=>{})}</script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/static/js/sw.js").catch(()=>{});
+}
+</script>
 </body>
 </html>

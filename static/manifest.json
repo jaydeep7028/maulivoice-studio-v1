@@ -3,8 +3,8 @@
   "short_name": "MauliVoice",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#070b1a",
-  "theme_color": "#7439ff",
-  "description": "NextGen AI-ready creator studio.",
+  "background_color": "#070914",
+  "theme_color": "#8d5cff",
+  "description": "Commercial one-window working creator studio.",
   "icons": []
 }

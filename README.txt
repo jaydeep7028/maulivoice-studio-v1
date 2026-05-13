@@ -1,1 +1,1 @@
-MauliVoice NextGen UI Exact Build. Upload/replace all files in GitHub and Deploy latest commit on Render. Docker + FFmpeg included.
+Commercial One-Window Working Build. Only visible features are working features. Upload to GitHub and deploy latest commit on Render.

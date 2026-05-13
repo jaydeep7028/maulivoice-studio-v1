@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: maulivoice-nextgen-ui
+    name: maulivoice-commercial-one-window
     runtime: docker
     plan: free
